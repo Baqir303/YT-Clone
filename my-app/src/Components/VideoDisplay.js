@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// import './YTShorts.css'; // Import CSS file for styling
 
 const YTShorts = () => {
   const [videos, setVideos] = useState([]);
@@ -8,7 +9,7 @@ const YTShorts = () => {
       try {
         const API_KEY = 'AIzaSyAyweQ-40PK3jo5xNZ-ZzOLc1H0TjnzRNQ';
         const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=university&maxResults=99`
+          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=lifehacks&maxResults=99`
         );
 
         if (!response.ok) {
@@ -26,18 +27,18 @@ const YTShorts = () => {
   }, []); 
 
   return (
-    <div className='video-display'>
-      <div className="video-list">
+    <div className='yt-shorts'>
+      <div className="yt-shorts-list">
         {videos.map((video) => (
-          <div key={video.id.videoId} className="video-item">
+          <div key={video.id.videoId} className="yt-shorts-item">
             <iframe
               title={video.snippet.title}
               width="560"
               height="315"
               src={`https://www.youtube.com/embed/${video.id.videoId}`}
-              frameborder="0"
+              frameBorder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowfullscreen
+              allowFullScreen
             ></iframe>
             <h3>{video.snippet.title}</h3>
             <p>{video.snippet.description}</p>
