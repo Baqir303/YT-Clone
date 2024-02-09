@@ -25,14 +25,14 @@ export default function Sidebar({ isOpen }) {
       
       <div className="shortcut-links">
         <Link to="/"><img src={HomeImg} alt="" className='HomeImg' /><p>Home</p></Link>
-        <a href="/"><img src={ExploreImg} alt="" /><p>Explore</p></a>
-        <a href="/"><img src={SubscriptionImg} alt="" /><p>Subscription</p></a>
+        <Link to="/"><img src={ExploreImg} alt="" /><p>Explore</p></Link>
+        <Link to="/"><img src={SubscriptionImg} alt="" /><p>Subscription</p></Link>
         <Link to="/shorts"><img src={ShortsImg} alt="" /><p>Shorts</p></Link>
-        <a href="/"><img src={LibraryImg} alt="" /><p>Library</p></a>
-        <a href="/"><img src={HistoryImg} alt="" /><p>History</p></a>
-        <a href="/"><img src={PlaylistIcon} alt="" /><p>Playlist</p></a>
-        <a href="/"><img src={MessageImg} alt="" /><p>Messages</p></a>
-        <a href="/"><img src={ShowMoreImg} alt="" /><p>Show More</p></a>
+        <Link to="/"><img src={LibraryImg} alt="" /><p>Library</p></Link>
+        <Link to="/"><img src={HistoryImg} alt="" /><p>History</p></Link>
+        <Link to="/"><img src={PlaylistIcon} alt="" /><p>Playlist</p></Link>
+        <Link to="/"><img src={MessageImg} alt="" /><p>Messages</p></Link>
+        <Link to="/"><img src={ShowMoreImg} alt="" /><p>Show More</p></Link>
         <hr />
       </div>
       <div className="Subscribed-list">

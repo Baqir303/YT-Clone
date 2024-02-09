@@ -7,14 +7,14 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <Router> {/* Wrap the entire application with Router */}
+    <Router> 
       <div>
         <ParentNS />
         <Banner />
         <Routes>
           <Route exact path="/" element={<YTVideos />} />
           <Route path="/shorts" element={<VideoDisplay />} />
-          {/* Add more routes as needed */}
+          
         </Routes>
       </div>
     </Router>
