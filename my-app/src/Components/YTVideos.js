@@ -6,9 +6,11 @@ const YTVideos = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const API_KEY = 'AIzaSyCp4I2cKYK9CdMnZCYHpIg6pGEoU7jSrnI';
+        const API_KEY = 'AIzaSyAyweQ-40PK3jo5xNZ-ZzOLc1H0TjnzRNQ';
+        const query = 'shark tank india';
+        
         const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=SharkTankIndia&type=video&videoDuration=medium&maxResults=20`
+          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${query}&type=video&videoDuration=medium&maxResults=20`
         );
 
         if (!response.ok) {

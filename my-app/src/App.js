@@ -1,28 +1,24 @@
 import './App.css';
-// import Navbar from './Components/Navbar';
-// import Sidebar from './Components/Sidebar';
 import ParentNS from './Components/ParentNS';
 import Banner from './Components/Banner';
-// import VideoList from './Components/VideoList';
 import VideoDisplay from './Components/VideoDisplay';
-// import Login from './Components/Login';
 import YTVideos from './Components/YTVideos';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    
     <div>
-    <ParentNS/>
-    <Banner/> 
-    {/* <VideoDisplay /> */}
-    {/* <VideoList/> */}
-    {/* <Login/> */}
-    <YTVideos/>
-
-    </div>    
-    
-    
-    );
+      <ParentNS />
+      <Banner />
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<YTVideos />} />
+          <Route path="/shorts" element={<VideoDisplay />} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </Router>
+    </div>
+  );
 }
 
 export default App;

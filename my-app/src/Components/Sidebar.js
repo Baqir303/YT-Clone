@@ -13,6 +13,7 @@ import WWEImg from '../Images/WWE logo.jpg'
 import WaqarzakaImg from '../Images/WakarZaka.jpg'
 import BitcoinImg from '../Images/Bitcoin.jpg'
 import Siuuu from '../Images/Suu.jpg'
+import ShortsImg from '../Images/ShortsYT.png'
 
 
 export default function Sidebar({ isOpen }) {
@@ -25,6 +26,7 @@ export default function Sidebar({ isOpen }) {
         <a href="/"><img src={HomeImg} alt="" className='HomeImg' /><p>Home</p></a>
         <a href="/"><img src={ExploreImg} alt="" /><p>Explore</p></a>
         <a href="/"><img src={SubscriptionImg} alt="" /><p>Subscription</p></a>
+        <a href="/shorts"><img src={ShortsImg} alt="" /><p>Shorts</p></a>
         <a href="/"><img src={LibraryImg} alt="" /><p>Library</p></a>
         <a href="/"><img src={HistoryImg} alt="" /><p>History</p></a>
         <a href="/"><img src={PlaylistIcon} alt="" /><p>Playlist</p></a>

@@ -12,6 +12,7 @@ import MicImage from '../Images/mic Icon.png'
 export default function Navbar({ handleMenuClick }) {
   return (
     <div className='Navbar-complete'>
+      
       <nav className='flex-div'>
         <div className="nav-left">
         <img src={menuImage} alt="" className='menulogo' onClick={handleMenuClick}  />
