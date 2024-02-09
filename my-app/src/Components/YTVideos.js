@@ -8,7 +8,7 @@ const YTVideos = () => {
       try {
         const API_KEY = 'AIzaSyCp4I2cKYK9CdMnZCYHpIg6pGEoU7jSrnI';
         const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=university&type=video&videoDuration=medium&maxResults=20`
+          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=SharkTankIndia&type=video&videoDuration=medium&maxResults=20`
         );
 
         if (!response.ok) {
