@@ -3,6 +3,7 @@
   padding: 0;
   font-family: 'poppins',sans-serif;
   box-sizing: border-box;
+  
 }
 a{
   text-decoration: none;
@@ -33,13 +34,17 @@ margin-left: 10px;
   display: flex;
   align-items: center;
 }
-
+.Navbar-complete{
+position:fixed;
+z-index: 100;
+width: 100%;
+}
 nav{
   padding: 10px 2%;
   justify-content: space-between;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   background: #fff;
-  position: sticky;
+  position: sticky ;
   top: 0;
   z-index: 10;
 }
@@ -95,12 +100,14 @@ margin-left: 10px;
   .Sidebar{
   background: #fff;
   width: 15%;
-  height: 100vh;
+  height: 200vh;
   position: fixed;
   top: 0;
   padding-left:2% ;
   padding-top: 80px;
-
+    position: fixed;
+    
+    
 }
 
 .shortcut-links a img{
@@ -173,4 +180,34 @@ display: none;
   height: 350px !important;
 
   border-radius: 8px;
+}
+
+/* ........................................................................ */
+.video-display{
+  margin-left: 15% !important;
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+}
+
+.video-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.video-item {
+  flex-grow: 1; /* Allow items to grow */
+  max-width: calc(25% - 20px); /* Maximum width for each item */
+}
+
+.video-item iframe {
+  width: 100%;
+  height: 200px; /* Adjust height as needed */
+  border: none;
+}
+
+.video-item h3 {
+  margin-top: 10px;
+  font-size: 18px;
 }
