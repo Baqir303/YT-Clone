@@ -7,17 +7,17 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <ParentNS />
-      <Banner />
-      <Router>
+    <Router> {/* Wrap the entire application with Router */}
+      <div>
+        <ParentNS />
+        <Banner />
         <Routes>
           <Route exact path="/" element={<YTVideos />} />
           <Route path="/shorts" element={<VideoDisplay />} />
           {/* Add more routes as needed */}
         </Routes>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
