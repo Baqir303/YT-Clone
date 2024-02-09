@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/YT-Clone/static/css/main.de67c225.css",
+    "main.js": "/YT-Clone/static/js/main.57f80d53.js",
+    "static/js/592.7f72a991.chunk.js": "/YT-Clone/static/js/592.7f72a991.chunk.js",
+    "static/media/MrBeastLogo.jpg": "/YT-Clone/static/media/MrBeastLogo.3a25ad635fcc5497151e.jpg",
+    "static/media/logoYT3.PNG": "/YT-Clone/static/media/logoYT3.e4af09119011f36489a1.PNG",
+    "static/media/WWE logo.jpg": "/YT-Clone/static/media/WWE logo.dca1f95d21177c3abac3.jpg",
+    "static/media/Explore.png": "/YT-Clone/static/media/Explore.197e9a9f56dff8a76937.png",
+    "static/media/Library.png": "/YT-Clone/static/media/Library.64e431ad1c8d4002f58d.png",
+    "static/media/Message.png": "/YT-Clone/static/media/Message.20ee83061611d9cd8c3b.png",
+    "static/media/History.png": "/YT-Clone/static/media/History.333064a82d90bdf99074.png",
+    "static/media/PlayList.png": "/YT-Clone/static/media/PlayList.05ceec719db555c84e92.png",
+    "static/media/Down Arrow.png": "/YT-Clone/static/media/Down Arrow.e3ef8bc5ac2a67e51e72.png",
+    "index.html": "/YT-Clone/index.html",
+    "main.de67c225.css.map": "/YT-Clone/static/css/main.de67c225.css.map",
+    "main.57f80d53.js.map": "/YT-Clone/static/js/main.57f80d53.js.map",
+    "592.7f72a991.chunk.js.map": "/YT-Clone/static/js/592.7f72a991.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.de67c225.css",
+    "static/js/main.57f80d53.js"
+  ]
+}
