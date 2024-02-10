@@ -25,7 +25,7 @@ export default function Sidebar({ isOpen }) {
       
       <div className="shortcut-links">
         <Link to="/"><img src={HomeImg} alt="" className='HomeImg' /><p>Home</p></Link>
-        <Link to="/"><img src={ExploreImg} alt="" /><p>Explore</p></Link>
+        <Link to="/explore"><img src={ExploreImg} alt="" /><p>Explore</p></Link>
         <Link to="/"><img src={SubscriptionImg} alt="" /><p>Subscription</p></Link>
         <Link to="/shorts"><img src={ShortsImg} alt="" /><p>Shorts</p></Link>
         <Link to="/"><img src={LibraryImg} alt="" /><p>Library</p></Link>

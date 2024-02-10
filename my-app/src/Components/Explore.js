@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
-// import './YTShorts.css'; // Import CSS file for styling
 
-const YTShorts = () => {
+const Explore = () => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const API_KEY = 'AAIzaSyBRawuHmfBMFXWfglDiKBFiUwE8MBrFRV8';
+        const API_KEY = 'AIzaSyBRawuHmfBMFXWfglDiKBFiUwE8MBrFRV8';
+        const query = 'Current things to Explore in the world';
+        
         const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=goodthings&maxResults=9`
+          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${query}&type=video&videoDuration=medium&maxResults=100`
         );
 
         if (!response.ok) {
@@ -27,10 +28,10 @@ const YTShorts = () => {
   }, []); 
 
   return (
-    <div className='yt-shorts'>
-      <div className="yt-shorts-list">
+    <div className='video-display'>
+      <div className="video-list">
         {videos.map((video) => (
-          <div key={video.id.videoId} className="yt-shorts-item">
+          <div key={video.id.videoId} className="video-item">
             <iframe
               title={video.snippet.title}
               width="560"
@@ -41,7 +42,6 @@ const YTShorts = () => {
               allowFullScreen
             ></iframe>
             <h3>{video.snippet.title}</h3>
-            <p>{video.snippet.description}</p>
           </div>
         ))}
       </div>
@@ -49,4 +49,4 @@ const YTShorts = () => {
   );
 };
 
-export default YTShorts;
+export default Explore;
