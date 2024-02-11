@@ -1,5 +1,8 @@
 import './App.css';
-import ParentNS from './Components/ParentNS';
+import React,{useState} from 'react'
+import Navbar from './Components/Navbar';
+import Sidebar from './Components/Sidebar';
+// import ParentNS from './Components/ParentNS';
 import Banner from './Components/Banner';
 import VideoDisplay from './Components/VideoDisplay';
 import YTVideos from './Components/YTVideos';
@@ -8,10 +11,18 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+      setIsSidebarOpen(!isSidebarOpen);
+  }
+
   return (
     <Router> 
       <div>
-        <ParentNS />
+      <Navbar handleMenuClick={toggleSidebar} />
+      <Sidebar isOpen={isSidebarOpen} />
+        {/* <ParentNS /> */}
         <Banner />
         <Routes>
           <Route exact path="/" element={<YTVideos/>} />

@@ -7,7 +7,7 @@ const Explore = () => {
     const fetchVideos = async () => {
       try {
         const API_KEY = 'AIzaSyA9xvdUbWJRQXge_35dET-oON-KIUBvtzs';
-        const query = 'Current random things to Explore in the world';
+        const query = 'Global Exploration, Informative Narratives, Cultural Diversity, Natural Wonders';
         
         const response = await fetch(
           `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${query}&type=video&videoDuration=medium&maxResults=100`
