@@ -12,7 +12,7 @@ function App() {
     <Router> 
       <div>
         <ParentNS />
-        <Banner />
+        <Banner/>
         <Routes>
           <Route exact path="/" element={<YTVideos/>} />
           <Route exact path="/shorts" element={<VideoDisplay />} />

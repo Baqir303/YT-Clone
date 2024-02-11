@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import menuImage from '../Images/menu.png';
 import logoImage from  '../Images/logo.png'
 import uploadImage from '../Images/upload.png'
@@ -9,7 +9,17 @@ import SearchImage from '../Images/Search.png'
 import MicImage from '../Images/mic Icon.png'
 
 
-export default function Navbar({ handleMenuClick }) {
+export default function Navbar({ handleMenuClick, handleSearch  }) {
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleChange = (e) => {
+    setSearchQuery(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    handleSearch(searchQuery);
+  };
+
   return (
     <div className='Navbar-complete'>
       
@@ -21,8 +31,8 @@ export default function Navbar({ handleMenuClick }) {
         </div>
         <div className="nav-middle flex-div">
           <div className="search-box">
-          <input type="text" placeholder='Search' name="" id="" />
-          <img src={SearchImage} alt="" className='searchicon'/>
+          <input type="text" placeholder='Search' value={searchQuery} onChange={handleChange} name="" id="" />
+          <img src={SearchImage} alt="" className='searchicon'  onClick={handleSearchClick}/>
           
           </div>
           <img src={MicImage} alt="" className='micicon' />
