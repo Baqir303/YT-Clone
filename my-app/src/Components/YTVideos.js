@@ -6,7 +6,7 @@ const YTVideos = ({ searchQuery }) => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const API_KEY = 'AIzaSyBRawuHmfBMFXWfglDiKBFiUwE8MBrFRV8';
+        const API_KEY = 'AIzaSyA9xvdUbWJRQXge_35dET-oON-KIUBvtzs';
         
         const response = await fetch(
           `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${searchQuery}&type=video&videoDuration=medium&maxResults=100`

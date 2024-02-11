@@ -6,7 +6,7 @@ const Explore = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const API_KEY = 'AIzaSyBRawuHmfBMFXWfglDiKBFiUwE8MBrFRV8';
+        const API_KEY = 'AIzaSyA9xvdUbWJRQXge_35dET-oON-KIUBvtzs';
         const query = 'Current random things to Explore in the world';
         
         const response = await fetch(

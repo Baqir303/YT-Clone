@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import './YTShorts.css'; // Import CSS file for styling
 
 const YTShorts = () => {
   const [videos, setVideos] = useState([]);
@@ -7,7 +6,7 @@ const YTShorts = () => {
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const API_KEY = 'AAIzaSyBRawuHmfBMFXWfglDiKBFiUwE8MBrFRV8';
+        const API_KEY = 'AIzaSyA9xvdUbWJRQXge_35dET-oON-KIUBvtzs';
         const response = await fetch(
           `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=goodthings&maxResults=9`
         );
