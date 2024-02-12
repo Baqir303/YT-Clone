@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-const YTVideos = ({ searchQuery }) => {
+const YTVideos = () => {
   const [videos, setVideos] = useState([]);
+
+  // useEffect(()=>{
+
+  //   alert("Welcome");
+  // },[])
+  
+    
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -24,7 +31,7 @@ const YTVideos = ({ searchQuery }) => {
     };
 
     fetchVideos();
-  }, [searchQuery]); 
+  }, []); 
 
   return (
     <div className='video-display'>

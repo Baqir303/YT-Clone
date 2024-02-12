@@ -1,5 +1,5 @@
 import './App.css';
-import React,{useState} from 'react'
+import React,{useEffect, useState} from 'react'
 import Navbar from './Components/Navbar';
 import Sidebar from './Components/Sidebar';
 // import ParentNS from './Components/ParentNS';
@@ -12,12 +12,13 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
+// this function is for sidebar to change from navbar
   const toggleSidebar = () => {
       setIsSidebarOpen(!isSidebarOpen);
   }
 
   return (
+    
     <Router> 
       <div>
       <Navbar handleMenuClick={toggleSidebar} />
