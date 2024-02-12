@@ -1,5 +1,5 @@
 import './App.css';
-import React,{useEffect, useState} from 'react'
+import React,{ useState} from 'react'
 import Navbar from './Components/Navbar';
 import Sidebar from './Components/Sidebar';
 // import ParentNS from './Components/ParentNS';
@@ -16,19 +16,23 @@ function App() {
   const toggleSidebar = () => {
       setIsSidebarOpen(!isSidebarOpen);
   }
-
+//for Search function
+const [searchQuery, setSearchQuery] = useState('');
+const handleSearch = (query) => {
+  setSearchQuery(query); // Update searchQuery state with the new query
+};
   return (
     
     <Router> 
       <div>
-      <Navbar handleMenuClick={toggleSidebar} />
+      <Navbar handleMenuClick={toggleSidebar} handleSearch={handleSearch} />
       <Sidebar isOpen={isSidebarOpen} />
         {/* <ParentNS /> */}
         <Banner />
         <Routes>
-          <Route exact path="/" element={<YTVideos/>} />
-          <Route exact path="/shorts" element={<VideoDisplay />} />
-          <Route exact path="/explore" element={<Explore/>}/>
+          <Route exact path="/" element={<YTVideos searchQuery={searchQuery}/>} />
+          <Route exact path="/shorts" element={<VideoDisplay searchQuery={searchQuery} />} />
+          <Route exact path="/explore" element={<Explore searchQuery={searchQuery}/>}/>
         </Routes>
       </div>
     </Router>

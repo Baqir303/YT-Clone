@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-const Explore = () => {
+const Explore = ({searchQuery}) => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
         const API_KEY = 'AIzaSyA9xvdUbWJRQXge_35dET-oON-KIUBvtzs';
-        const query = 'Global Exploration, Informative Narratives, Cultural Diversity, Natural Wonders';
+        const query = searchQuery ||'Global Exploration, Informative Narratives, Cultural Diversity, Natural Wonders';
         
         const response = await fetch(
           `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${query}&type=video&videoDuration=medium&maxResults=100`
@@ -25,7 +25,7 @@ const Explore = () => {
     };
 
     fetchVideos();
-  }, []); 
+  }, [searchQuery]); 
 
   return (
     <div className='video-display'>

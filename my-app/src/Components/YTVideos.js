@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const YTVideos = () => {
+const YTVideos = ({searchQuery}) => {
   const [videos, setVideos] = useState([]);
 
   // useEffect(()=>{
@@ -14,7 +14,7 @@ const YTVideos = () => {
     const fetchVideos = async () => {
       try {
         const API_KEY = 'AIzaSyA9xvdUbWJRQXge_35dET-oON-KIUBvtzs';
-        var Query = 'Shark tank india';
+        var Query = searchQuery ||'Shark tank india' ;
         const response = await fetch(
           `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${Query}&type=video&videoDuration=medium&maxResults=100`
         );
@@ -31,7 +31,7 @@ const YTVideos = () => {
     };
 
     fetchVideos();
-  }, []); 
+  }, [searchQuery]); 
 
   return (
     <div className='video-display'>

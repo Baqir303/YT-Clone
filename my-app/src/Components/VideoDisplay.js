@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
-const YTShorts = () => {
+const YTShorts = ({searchQuery}) => {
   const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     const fetchVideos = async () => {
       try {
-        const API_KEY = 'AIzaSyA9xvdUbWJRQXge_35dET-oON-KIUBvtzs';
+        const API_KEY = 'AIzaSyA9xvdUbWJRQXge_35dET-oON-KIUBvtzs'; 
+        var query = searchQuery || 'Good things';
         const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=goodthings&maxResults=9`
+          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${query}&maxResults=9`
         );
 
         if (!response.ok) {
@@ -23,7 +24,7 @@ const YTShorts = () => {
     };
 
     fetchVideos();
-  }, []); 
+  }, [searchQuery]); 
 
   return (
     <div className='yt-shorts'>
