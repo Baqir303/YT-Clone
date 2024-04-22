@@ -14,7 +14,7 @@ const YTVideos = ({searchQuery}) => {
     const fetchVideos = async () => {
       try {
         const API_KEY = 'AIzaSyA9xvdUbWJRQXge_35dET-oON-KIUBvtzs';
-        var Query = searchQuery ||'Shark tank india' ;
+        var Query = searchQuery ||'codewithharry' ;
         const response = await fetch(
           `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${Query}&type=video&videoDuration=medium&maxResults=100`
         );

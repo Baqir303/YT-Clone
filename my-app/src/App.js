@@ -16,13 +16,12 @@ function App() {
   const toggleSidebar = () => {
       setIsSidebarOpen(!isSidebarOpen);
   }
-//for Search function
+//for Search function 
 const [searchQuery, setSearchQuery] = useState('');
 const handleSearch = (query) => {
   setSearchQuery(query); // Update searchQuery state with the new query
 };
   return (
-    
     <Router> 
       <div>
       <Navbar handleMenuClick={toggleSidebar} handleSearch={handleSearch} />
@@ -38,5 +37,4 @@ const handleSearch = (query) => {
     </Router>
   );
 }
-
 export default App;
