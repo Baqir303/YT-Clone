@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import logoImg from '../Images/logo.png';
 import bgImg from '../Images/bg-v3.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const styles = {
   mainDiv: {
-    width: '100vw',
-    height: '100vh',
+    width: '120vw',
+    height: '108vh',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundImage: `url(${bgImg})`, 
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   },
   container: {
     backgroundColor: '#fff',
@@ -68,21 +71,34 @@ const styles = {
     color: '#000',
   }
 };
-
 function LoginSignup() {
-  const [isLoginVisible, setIsLoginVisible] = useState(true);
-
-  const toggleVisibility = () => {
-    setIsLoginVisible(!isLoginVisible);
-  };
-
-  return (
+    const navigate = useNavigate();
+    const [isLoginVisible, setIsLoginVisible] = useState(true);
+  
+    const toggleVisibility = () => {
+      setIsLoginVisible(!isLoginVisible);
+    };
+  
+    const handleLogin = (e) => {
+      e.preventDefault();
+      // Perform login logic here
+      // For now, just redirect to home
+      navigate('/');
+    };
+  
+    const handleSignup = (e) => {
+      e.preventDefault();
+      // Perform signup logic here
+      // For now, just redirect to Personalization
+      navigate('/Personalization');
+    };
+    return (
     <div style={styles.mainDiv}>
       {isLoginVisible ? (
         <div style={styles.container}>
            <img src={logoImg} alt="App Logo" style={styles.logo} />
           <h1 style={styles.header}>Login to Your Account</h1>
-          <form>
+          <form onSubmit={handleLogin}>
             <div style={styles.inputGroup}>
               <label htmlFor="login-email" style={styles.label}>Email</label>
               <input type="email" id="login-email" name="email" required style={styles.input} />
@@ -99,7 +115,7 @@ function LoginSignup() {
         <div style={styles.container}>
           <img src={logoImg} alt="App Logo" style={styles.logo} />
           <h1 style={styles.header}>Create Your Account</h1>
-          <form>
+          <form onSubmit={handleSignup}>
             <div style={styles.inputGroup}>
               <label htmlFor="signup-name" style={styles.label}>Full Name</label>
               <input type="text" id="signup-name" name="name" required style={styles.input} />
@@ -124,5 +140,7 @@ function LoginSignup() {
     </div>
   );
 }
+
+
 
 export default LoginSignup;

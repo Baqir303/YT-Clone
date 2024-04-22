@@ -1,40 +1,58 @@
 import './App.css';
-import React,{ useState} from 'react'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import Navbar from './Components/Navbar';
 import Sidebar from './Components/Sidebar';
-// import ParentNS from './Components/ParentNS';
 import Banner from './Components/Banner';
 import VideoDisplay from './Components/VideoDisplay';
 import YTVideos from './Components/YTVideos';
 import Explore from './Components/Explore';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-
+import UserInfo from './Components/UserInfo';
+import LoginSignup from './Components/loginsignup';
+import Personalization from './Components/Personalization';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-// this function is for sidebar to change from navbar
   const toggleSidebar = () => {
-      setIsSidebarOpen(!isSidebarOpen);
-  }
-//for Search function 
-const [searchQuery, setSearchQuery] = useState('');
-const handleSearch = (query) => {
-  setSearchQuery(query); // Update searchQuery state with the new query
-};
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
   return (
-    <Router> 
-      <div>
-      <Navbar handleMenuClick={toggleSidebar} handleSearch={handleSearch} />
-      <Sidebar isOpen={isSidebarOpen} />
-        {/* <ParentNS /> */}
-        <Banner />
-        <Routes>
-          <Route exact path="/" element={<YTVideos searchQuery={searchQuery}/>} />
-          <Route exact path="/shorts" element={<VideoDisplay searchQuery={searchQuery} />} />
-          <Route exact path="/explore" element={<Explore searchQuery={searchQuery}/>}/>
-        </Routes>
-      </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<LoginSignup />} />
+        <Route path="/Personalization" element={<Personalization />} />
+        <Route path="/*" element={<MainApp
+          isSidebarOpen={isSidebarOpen}
+          toggleSidebar={toggleSidebar}
+          searchQuery={searchQuery}
+          handleSearch={handleSearch}
+        />} />
+      </Routes>
     </Router>
   );
 }
+
+function MainApp({ isSidebarOpen, toggleSidebar, searchQuery, handleSearch }) {
+  return (
+    <>
+      <Navbar handleMenuClick={toggleSidebar} handleSearch={handleSearch} />
+      <Sidebar isOpen={isSidebarOpen} />
+      <Banner />
+      <Routes>
+        <Route exact path="/" element={<YTVideos searchQuery={searchQuery} />} />
+        <Route exact path="/shorts" element={<VideoDisplay searchQuery={searchQuery} />} />
+        <Route exact path="/explore" element={<Explore searchQuery={searchQuery} />} />
+        <Route exact path="/user-info" element={<UserInfo searchQuery={searchQuery} />} />
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </>
+  );
+}
+
 export default App;

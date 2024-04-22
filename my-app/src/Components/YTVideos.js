@@ -16,7 +16,7 @@ const YTVideos = ({searchQuery}) => {
         const API_KEY = 'AIzaSyA9xvdUbWJRQXge_35dET-oON-KIUBvtzs';
         var Query = searchQuery ||'codewithharry' ;
         const response = await fetch(
-          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${Query}&type=video&videoDuration=medium&maxResults=100`
+          // `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${Query}&type=video&videoDuration=medium&maxResults=100`
         );
 
         if (!response.ok) {

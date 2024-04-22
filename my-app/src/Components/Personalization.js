@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PersonalizationPNG from '../Images/Personalization.png';
+import { useNavigate } from 'react-router-dom';
 
 const styles = {
     body: {
@@ -75,6 +76,7 @@ const initialSuggestions = ['Sports', 'Education', 'Art', 'Books', 'Gaming', 'Ph
 function Personalization() {
   const [suggestions, setSuggestions] = useState(initialSuggestions);
   const [selectedCategories, setSelectedCategories] = useState([]);
+  const navigate = useNavigate();
 
   const toggleCategory = (category) => {
     if (selectedCategories.includes(category)) {
@@ -84,6 +86,10 @@ function Personalization() {
     }
   };
 
+  const handleSubmit = () => {
+    navigate('/AccountCreated');
+  };
+
   const handleAddMore = () => {
     const newSuggestion = prompt('Enter a new suggestion:');
     if (newSuggestion) {
@@ -91,13 +97,11 @@ function Personalization() {
     }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert('Selected categories: ' + JSON.stringify(selectedCategories));
-    // Here, you could save the selected categories to localStorage or send them to a server
-  };
-
+ 
+  
+  
   return (
+    
     <div style={styles.body}>
       <div style={styles.container}>
         <h1>Personalization Page</h1>
@@ -139,7 +143,7 @@ function Personalization() {
               </div>
             ))}
           </div>
-          <button type="submit" style={styles.button}>Next</button>
+          <button type="submit" style={styles.button} onClick={handleSubmit}>Next</button>
         </form>
       </div>
     </div>
