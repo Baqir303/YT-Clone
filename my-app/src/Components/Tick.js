@@ -14,7 +14,7 @@ const Tick = () => {
     }, []);
 
     const redirectToLogin = () => {
-        window.location.href = 'login&signup.html';
+        window.location.href = '/login';
     };
 
     return (

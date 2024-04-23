@@ -10,6 +10,7 @@ import Explore from './Components/Explore';
 import UserInfo from './Components/UserInfo';
 import LoginSignup from './Components/loginsignup';
 import Personalization from './Components/Personalization';
+import Tick from './Components/Tick';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -27,6 +28,7 @@ function App() {
       <Routes>
         <Route path="/login" element={<LoginSignup />} />
         <Route path="/Personalization" element={<Personalization />} />
+        <Route path="/AccountCreated" element={<Tick/>} />
         <Route path="/*" element={<MainApp
           isSidebarOpen={isSidebarOpen}
           toggleSidebar={toggleSidebar}

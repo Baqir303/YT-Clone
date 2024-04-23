@@ -87,6 +87,7 @@ function Personalization() {
   };
 
   const handleSubmit = () => {
+    console.log("handle submit is working");
     navigate('/AccountCreated');
   };
 
