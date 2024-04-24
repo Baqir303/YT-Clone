@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PersonalizationPNG from '../Images/Personalization.png';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const styles = {
     body: {
@@ -74,81 +75,91 @@ const styles = {
 const initialSuggestions = ['Sports', 'Education', 'Art', 'Books', 'Gaming', 'Photography', 'Podcasts', 'Entertainment', 'News', 'Music', 'Technologies', 'Movies'];
 
 function Personalization() {
-  const [suggestions, setSuggestions] = useState(initialSuggestions);
-  const [selectedCategories, setSelectedCategories] = useState([]);
-  const navigate = useNavigate();
+    const [suggestions, setSuggestions] = useState(initialSuggestions);
+    const [selectedCategories, setSelectedCategories] = useState([]);
+    const navigate = useNavigate();
 
-  const toggleCategory = (category) => {
-    if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter(cat => cat !== category));
-    } else {
-      setSelectedCategories([...selectedCategories, category]);
-    }
-  };
+    const toggleCategory = (category) => {
+        if (selectedCategories.includes(category)) {
+            setSelectedCategories(selectedCategories.filter(cat => cat !== category));
+        } else {
+            setSelectedCategories([...selectedCategories, category]);
+        }
+    };
 
-  const handleSubmit = () => {
-    console.log("handle submit is working");
-    navigate('/AccountCreated');
-  };
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+       
+        try {
+            // Send a POST request to the backend to save selected categories
+            const response = await axios.post('http://localhost/YT_Backend/save-categories.php', { categories: selectedCategories });
+            
+            if (response.data === 'Categories saved successfully') {
+                navigate('/AccountCreated');
+            } else {
+                // Handle error
+                console.error('Error saving categories:', response.data);
+            }
+        } catch (error) {
+            // Handle network error
+            console.error('Error saving categories:', error.message);
+        }
+    };
 
-  const handleAddMore = () => {
-    const newSuggestion = prompt('Enter a new suggestion:');
-    if (newSuggestion) {
-      setSuggestions([...suggestions, newSuggestion]);
-    }
-  };
+    const handleAddMore = () => {
+        const newSuggestion = prompt('Enter a new suggestion:');
+        if (newSuggestion) {
+            setSuggestions([...suggestions, newSuggestion]);
+        }
+    };
 
- 
-  
-  
-  return (
-    
-    <div style={styles.body}>
-      <div style={styles.container}>
-        <h1>Personalization Page</h1>
-        <b>Select your preferred video categories, tags, and channels:</b>
-        <div id="suggestions">
-          {suggestions.map((suggestion, index) => (
-            <div
-              key={index}
-              className="suggestion"
-              style={{
-                ...styles.suggestion,
-                ...(selectedCategories.includes(suggestion) ? styles.suggestionSelected : {})
-              }}
-              onClick={() => toggleCategory(suggestion)}
-            >
-              {suggestion}
+    return (
+        <div style={styles.body}>
+            <div style={styles.container}>
+                <h1>Personalization Page</h1>
+                <b>Select your preferred video categories, tags, and channels:</b>
+                <div id="suggestions">
+                    {suggestions.map((suggestion, index) => (
+                        <div
+                            key={index}
+                            className="suggestion"
+                            style={{
+                                ...styles.suggestion,
+                                ...(selectedCategories.includes(suggestion) ? styles.suggestionSelected : {})
+                            }}
+                            onClick={() => toggleCategory(suggestion)}
+                        >
+                            {suggestion}
+                        </div>
+                    ))}
+                </div>
+                <button style={styles.button} onClick={handleAddMore}>
+                    Add More
+                </button>
+                <form id="personalizationForm" onSubmit={handleSubmit}>
+                    <br />
+                    <label>Selected Categories:</label>
+                    <div id="selectedCategories">
+                        {selectedCategories.map((category, index) => (
+                            <div key={index} style={{
+                                ...styles.suggestion,
+                                ...styles.suggestionSelected,
+                                position: 'relative',
+                                padding: '5px 30px 5px 10px'
+                            }}>
+                                {category}
+                                <span
+                                    style={styles.closeButton}
+                                    onClick={() => setSelectedCategories(selectedCategories.filter(cat => cat !== category))}
+                                >&times;</span>
+                            </div>
+                        ))}
+                    </div>
+                    <button type="submit" style={styles.button}>Next</button>
+                </form>
             </div>
-          ))}
         </div>
-        <button style={styles.button} onClick={handleAddMore}>
-          Add More
-        </button>
-        <form id="personalizationForm" onSubmit={handleSubmit}>
-          <br />
-          <label>Selected Categories:</label>
-          <div id="selectedCategories">
-            {selectedCategories.map((category, index) => (
-              <div key={index} style={{
-                ...styles.suggestion,
-                ...styles.suggestionSelected,
-                position: 'relative',
-                padding: '5px 30px 5px 10px'
-              }}>
-                {category}
-                <span
-                  style={styles.closeButton}
-                  onClick={() => setSelectedCategories(selectedCategories.filter(cat => cat !== category))}
-                >&times;</span>
-              </div>
-            ))}
-          </div>
-          <button type="submit" style={styles.button} onClick={handleSubmit}>Next</button>
-        </form>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Personalization;

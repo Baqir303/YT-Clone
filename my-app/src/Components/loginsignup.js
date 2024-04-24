@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import logoImg from '../Images/logo.png';
 import bgImg from '../Images/bg-v3.jpg';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+// import { Link } from 'react-router-dom';
 
 const styles = {
   mainDiv: {
@@ -17,7 +19,7 @@ const styles = {
   container: {
     backgroundColor: '#fff',
     padding: '30px',
-    borderRadius: '5px',
+    // borderRadius: '5px',
     boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
     textAlign: 'center',
     maxWidth: '400px',
@@ -72,32 +74,72 @@ const styles = {
   }
 };
 function LoginSignup() {
-    const navigate = useNavigate();
-    const [isLoginVisible, setIsLoginVisible] = useState(true);
+  const navigate = useNavigate();
+  const [isLoginVisible, setIsLoginVisible] = useState(true);
+  const [message, setMessage] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [categories, setCategories] = useState([]);
+
+
+  const toggleVisibility = () => {
+    setIsLoginVisible(!isLoginVisible);
+    setMessage('');
+  };
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+
+    try {
+      const response = await axios.post('http://localhost/YT_Backend/login.php', { email, password });
+
+      if (response.data === 'Logged in') {
+        navigate('/');
+      } else {
+        setMessage(response.data);
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      setMessage('An error occurred. Please try again.');
+    }
+  };
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const password = formData.get('password');
+    const confirmPassword = formData.get('confirm-password');
+    
+    if (password !== confirmPassword) {
+      setMessage('Passwords do not match');
+      return;
+    }
+    try {
+      const response = await axios.post('http://localhost/YT_Backend/signup.php', { name, email, password });
+      axios.post('http://localhost/YT_Backend/save-categories.php', { email});
+      if (response.data === 'Signup successful') {
+        navigate('/Personalization');
+      } else {
+        setMessage(response.data);
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
+      setMessage('An error occurred. Please try again.');
+    }
+    
+
+  };
   
-    const toggleVisibility = () => {
-      setIsLoginVisible(!isLoginVisible);
-    };
-  
-    const handleLogin = (e) => {
-      e.preventDefault();
-      // Perform login logic here
-      // For now, just redirect to home
-      navigate('/');
-    };
-  
-    const handleSignup = (e) => {
-      e.preventDefault();
-      // Perform signup logic here
-      // For now, just redirect to Personalization
-      navigate('/Personalization');
-    };
-    return (
+  return (
     <div style={styles.mainDiv}>
       {isLoginVisible ? (
         <div style={styles.container}>
-           <img src={logoImg} alt="App Logo" style={styles.logo} />
+          <img src={logoImg} alt="App Logo" style={styles.logo} />
           <h1 style={styles.header}>Login to Your Account</h1>
+          {message && <p style={{ color: 'red' }}>{message}</p>}
           <form onSubmit={handleLogin}>
             <div style={styles.inputGroup}>
               <label htmlFor="login-email" style={styles.label}>Email</label>
@@ -107,14 +149,15 @@ function LoginSignup() {
               <label htmlFor="login-password" style={styles.label}>Password</label>
               <input type="password" id="login-password" name="password" required style={styles.input} />
             </div>
-            <button type="submit" style={styles.button} onMouseOver={e => e.currentTarget.style.backgroundColor = styles.buttonHover.backgroundColor} onMouseOut={e => e.currentTarget.style.backgroundColor = styles.button.backgroundColor}>Login</button>
+            <button type="submit" style={styles.button}>Login</button>
           </form>
-          <p>Don't have an account yet? <a href="#" onClick={toggleVisibility} style={styles.link}>Sign Up</a></p>
+          <p>Don't have an account yet? <a  onClick={toggleVisibility} style={styles.link}>Sign Up</a></p>
         </div>
       ) : (
         <div style={styles.container}>
           <img src={logoImg} alt="App Logo" style={styles.logo} />
           <h1 style={styles.header}>Create Your Account</h1>
+          {message && <p style={{ color: 'red' }}>{message}</p>}
           <form onSubmit={handleSignup}>
             <div style={styles.inputGroup}>
               <label htmlFor="signup-name" style={styles.label}>Full Name</label>
@@ -132,15 +175,13 @@ function LoginSignup() {
               <label htmlFor="signup-confirm-password" style={styles.label}>Confirm Password</label>
               <input type="password" id="signup-confirm-password" name="confirm-password" required style={styles.input} />
             </div>
-            <button type="submit" style={styles.button} onMouseOver={e => e.currentTarget.style.backgroundColor = styles.buttonHover.backgroundColor} onMouseOut={e => e.currentTarget.style.backgroundColor = styles.button.backgroundColor}>Sign Up</button>
+            <button type="submit" style={styles.button}>Sign Up</button>
           </form>
-          <p>Already have an account? <a href="#" onClick={toggleVisibility} style={styles.link}>Login</a></p>
+          <p>Already have an account? <a  onClick={toggleVisibility} style={styles.link}>Login</a></p>
         </div>
       )}
     </div>
   );
 }
-
-
 
 export default LoginSignup;
