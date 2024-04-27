@@ -29,9 +29,9 @@ export default function Sidebar({ isOpen }) {
         <Link to="/subscriptions"><img src={SubscriptionImg} alt="" /><p>Subscription</p></Link>
         <Link to="/shorts"><img src={ShortsImg} alt="" /><p>Shorts</p></Link>
         <Link to="/library"><img src={LibraryImg} alt="" /><p>Library</p></Link>
-        <Link to="/"><img src={HistoryImg} alt="" /><p>History</p></Link>
-        <Link to="/"><img src={PlaylistIcon} alt="" /><p>Playlist</p></Link>
-        <Link to="/"><img src={MessageImg} alt="" /><p>Messages</p></Link>
+        <Link to="/history"><img src={HistoryImg} alt="" /><p>History</p></Link>
+        <Link to="/playlist"><img src={PlaylistIcon} alt="" /><p>Playlist</p></Link>
+        <Link to="/notification"><img src={MessageImg} alt="" /><p>Messages</p></Link>
         
         <hr />
       </div>

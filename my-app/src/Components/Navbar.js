@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import menuImage from '../Images/menu.png';
 import logoImage from '../Images/logo.png';
-import uploadImage from '../Images/upload.png';
+// import uploadImage from '../Images/upload.png';
 import notificationImage from '../Images/notification.png';
 import userImage from '../Images/user.png';
 //  import moreImage from '../Images/more.png'
 import SearchImage from '../Images/Search.png';
-import MicImage from '../Images/mic Icon.png';
+// import MicImage from '../Images/mic Icon.png';
 import UserInfo from './UserInfo';
 
 export default function Navbar({ handleMenuClick, handleSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
+  const [history, setHistory] = useState([]);
+  const navigate = useNavigate();
 
   const toggleUserInfo = () => {
     setIsUserInfoOpen(!isUserInfoOpen);
@@ -28,8 +30,14 @@ export default function Navbar({ handleMenuClick, handleSearch }) {
     }
   };
 
+  const handleNotiClick =()=>{
+    navigate('/notification');
+  }
   const handleSearchClick = () => {
     handleSearch(searchQuery);
+    localStorage.setItem('history',','+history);
+    setHistory(prevHistory => [...prevHistory,searchQuery]);
+    
   };
 
   return (
@@ -44,15 +52,20 @@ export default function Navbar({ handleMenuClick, handleSearch }) {
             <input type="text" placeholder='Search' name="" id="" value={searchQuery} onChange={handleChange} onKeyPress={handleKeyPress} />
             <img src={SearchImage} alt="" className='searchicon' onClick={handleSearchClick} />
           </div>
-          <img src={MicImage} alt="" className='micicon' />
+          {/* <img src={MicImage} alt="" className='micicon' /> */}
         </div>
         <div className="nav-right flex-div">
-          <img src={uploadImage} alt="" className='uploadImg' />
+          {/* <img src={uploadImage} alt="" className='uploadImg' /> */}
           {/* <img src={moreImage} alt="" className='moreImg'/> */}
-          <img src={notificationImage} alt="" className='notiImg' />
+          <img src={notificationImage} alt="" className='notiImg' onClick={handleNotiClick} />
           <Link to="/"><img src={userImage} alt="" className='UsrImg' onClick={toggleUserInfo} /></Link>
       {isUserInfoOpen && <UserInfo />}
         </div>
+        {/* <ul>
+        {history.map((item, index) => (
+          <li key={index}>{item}</li>
+        ))}
+      </ul> */}
       </nav>
     </div>
   );

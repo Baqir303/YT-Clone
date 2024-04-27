@@ -13,6 +13,9 @@ import Personalization from './Components/Personalization';
 import Tick from './Components/Tick';
 import Library from './Components/Library';
 import Subscriptions from './Components/Subscriptions';
+import History from './Components/History';
+import Notification from './Components/Notification';
+import Playlist from './Components/Playlist';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -31,7 +34,7 @@ function App() {
         <Route path="/login" element={<LoginSignup />} />
         <Route path="/Personalization" element={<Personalization />} />
         <Route path="/AccountCreated" element={<Tick/>} />
-        {/* <Route exact path="/library" element={<Library searchQuery={searchQuery} />} /> */}
+        
         <Route path="/*" element={<MainApp
           isSidebarOpen={isSidebarOpen}
           toggleSidebar={toggleSidebar}
@@ -56,6 +59,9 @@ function MainApp({ isSidebarOpen, toggleSidebar, searchQuery, handleSearch }) {
         <Route exact path="/user-info" element={<UserInfo searchQuery={searchQuery} />} />
         <Route exact path="/library" element={<Library searchQuery={searchQuery} />} />
         <Route exact path="/subscriptions" element={<Subscriptions searchQuery={searchQuery} />} />
+        <Route exact path="/history" element={<History searchQuery={searchQuery} />} />
+        <Route exact path="/notification" element={<Notification searchQuery={searchQuery} />} />
+        <Route exact path="/playlist" element={<Playlist searchQuery={searchQuery} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>

@@ -9,7 +9,7 @@ const YTShorts = ({searchQuery}) => {
         const API_KEY = 'AIzaSyA9xvdUbWJRQXge_35dET-oON-KIUBvtzs'; 
         var query = searchQuery || 'Good things';
         const response = await fetch(
-          // `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${query}&maxResults=9`
+          `https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${query}&maxResults=9`
         );
 
         if (!response.ok) {

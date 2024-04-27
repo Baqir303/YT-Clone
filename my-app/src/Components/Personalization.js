@@ -11,12 +11,12 @@ const styles = {
         backgroundImage: `url(${PersonalizationPNG})`,
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',  // Centers the background image
+        backgroundPosition: 'center',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '107vh',  // Full viewport height
-        width: '112vw'    // Full viewport width, adjust as necessary
+        height: '107vh',  
+        width: '112vw'    
       },
   container: {
     maxWidth: '600px',
@@ -91,14 +91,12 @@ function Personalization() {
         e.preventDefault();
        
         try {
-            // Send a POST request to the backend to save selected categories
             const response = await axios.post('http://localhost/YT_Backend/save-categories.php', { categories: selectedCategories,email: localStorage.getItem('email') });
             localStorage.setItem('categories',selectedCategories);
             
             if (response.data === 'Categories saved successfully') {
                 navigate('/AccountCreated');
             } else {
-                // Handle error
                 console.error('Error saving categories:', response.data);
             }
         } catch (error) {
