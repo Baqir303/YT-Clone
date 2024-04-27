@@ -92,7 +92,7 @@ function Personalization() {
        
         try {
             // Send a POST request to the backend to save selected categories
-            const response = await axios.post('http://localhost/YT_Backend/save-categories.php', { categories: selectedCategories });
+            const response = await axios.post('http://localhost/YT_Backend/save-categories.php', { categories: selectedCategories,email: localStorage.getItem('email') });
             
             if (response.data === 'Categories saved successfully') {
                 navigate('/AccountCreated');

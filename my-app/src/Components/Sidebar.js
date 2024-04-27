@@ -28,15 +28,15 @@ export default function Sidebar({ isOpen }) {
         <Link to="/explore"><img src={ExploreImg} alt="" /><p>Explore</p></Link>
         <Link to="/"><img src={SubscriptionImg} alt="" /><p>Subscription</p></Link>
         <Link to="/shorts"><img src={ShortsImg} alt="" /><p>Shorts</p></Link>
-        <Link to="/"><img src={LibraryImg} alt="" /><p>Library</p></Link>
+        <Link to="/library"><img src={LibraryImg} alt="" /><p>Library</p></Link>
         <Link to="/"><img src={HistoryImg} alt="" /><p>History</p></Link>
         <Link to="/"><img src={PlaylistIcon} alt="" /><p>Playlist</p></Link>
         <Link to="/"><img src={MessageImg} alt="" /><p>Messages</p></Link>
-        <Link to="/"><img src={ShowMoreImg} alt="" /><p>Show More</p></Link>
+        
         <hr />
       </div>
       <div className="Subscribed-list">
-        <h3>Subscribed</h3>
+        <h3>Recommendations</h3>
         <a href="/"><img src={MrBeastImg} alt="" /><p>Mr Beast</p></a>
         <a href="/"><img src={WWEImg} alt="" /><p>WWE</p></a>
         <a href="/"><img src={WaqarzakaImg} alt="" /><p>Waqar Zaka</p></a>

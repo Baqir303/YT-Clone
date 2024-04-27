@@ -3,6 +3,7 @@ import logoImg from '../Images/logo.png';
 import bgImg from '../Images/bg-v3.jpg';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 // import { Link } from 'react-router-dom';
 
 const styles = {
@@ -93,8 +94,8 @@ function LoginSignup() {
 
     try {
       const response = await axios.post('http://localhost/YT_Backend/login.php', { email, password });
-
       if (response.data === 'Logged in') {
+        localStorage.setItem('email',email);
         navigate('/');
       } else {
         setMessage(response.data);
@@ -119,8 +120,9 @@ function LoginSignup() {
     }
     try {
       const response = await axios.post('http://localhost/YT_Backend/signup.php', { name, email, password });
-      axios.post('http://localhost/YT_Backend/save-categories.php', { email});
-      if (response.data === 'Signup successful') {
+      // axios.post('http://localhost/YT_Backend/save-categories.php', { email});
+      if (response.data !== 'Invalid request method') {
+        localStorage.setItem('email',response.data);
         navigate('/Personalization');
       } else {
         setMessage(response.data);
@@ -151,10 +153,11 @@ function LoginSignup() {
             </div>
             <button type="submit" style={styles.button}>Login</button>
           </form>
-          <p>Don't have an account yet? <a  onClick={toggleVisibility} style={styles.link}>Sign Up</a></p>
+          <p>Don't have an account yet? <Link to=""  onClick={toggleVisibility} style={styles.link}>Sign Up</Link></p>
         </div>
       ) : (
         <div style={styles.container}>
+          
           <img src={logoImg} alt="App Logo" style={styles.logo} />
           <h1 style={styles.header}>Create Your Account</h1>
           {message && <p style={{ color: 'red' }}>{message}</p>}
@@ -177,7 +180,7 @@ function LoginSignup() {
             </div>
             <button type="submit" style={styles.button}>Sign Up</button>
           </form>
-          <p>Already have an account? <a  onClick={toggleVisibility} style={styles.link}>Login</a></p>
+          <p>Already have an account? <Link to="" onClick={toggleVisibility} style={styles.link}>Login</Link></p>
         </div>
       )}
     </div>

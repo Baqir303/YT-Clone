@@ -11,6 +11,7 @@ import UserInfo from './Components/UserInfo';
 import LoginSignup from './Components/loginsignup';
 import Personalization from './Components/Personalization';
 import Tick from './Components/Tick';
+import Library from './Components/Library';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<LoginSignup />} />
         <Route path="/Personalization" element={<Personalization />} />
         <Route path="/AccountCreated" element={<Tick/>} />
+        {/* <Route exact path="/library" element={<Library searchQuery={searchQuery} />} /> */}
         <Route path="/*" element={<MainApp
           isSidebarOpen={isSidebarOpen}
           toggleSidebar={toggleSidebar}
@@ -51,6 +53,7 @@ function MainApp({ isSidebarOpen, toggleSidebar, searchQuery, handleSearch }) {
         <Route exact path="/shorts" element={<VideoDisplay searchQuery={searchQuery} />} />
         <Route exact path="/explore" element={<Explore searchQuery={searchQuery} />} />
         <Route exact path="/user-info" element={<UserInfo searchQuery={searchQuery} />} />
+        <Route exact path="/library" element={<Library searchQuery={searchQuery} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>

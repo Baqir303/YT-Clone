@@ -8,9 +8,15 @@ import userImage from '../Images/user.png';
 //  import moreImage from '../Images/more.png'
 import SearchImage from '../Images/Search.png';
 import MicImage from '../Images/mic Icon.png';
+import UserInfo from './UserInfo';
 
 export default function Navbar({ handleMenuClick, handleSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
+  const [isUserInfoOpen, setIsUserInfoOpen] = useState(false);
+
+  const toggleUserInfo = () => {
+    setIsUserInfoOpen(!isUserInfoOpen);
+  };
 
   const handleChange = (event) => {
     setSearchQuery(event.target.value);
@@ -44,7 +50,8 @@ export default function Navbar({ handleMenuClick, handleSearch }) {
           <img src={uploadImage} alt="" className='uploadImg' />
           {/* <img src={moreImage} alt="" className='moreImg'/> */}
           <img src={notificationImage} alt="" className='notiImg' />
-          <Link to="/user-info"><img src={userImage} alt="" className='UsrImg'/></Link>
+          <Link to="/"><img src={userImage} alt="" className='UsrImg' onClick={toggleUserInfo} /></Link>
+      {isUserInfoOpen && <UserInfo />}
         </div>
       </nav>
     </div>
