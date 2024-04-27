@@ -38,6 +38,7 @@ const UserInfo = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('email');
+    localStorage.removeItem('categories');
     navigate('/login');
   };
 
