@@ -23,7 +23,6 @@ export default function Playlist() {
       fontFamily: 'Times New Roman',
     }}>
       <h2 style={{
-        // marginBottom: '20px',
         fontSize: '24px',
       }}>Playlist</h2>
       <ul style={{

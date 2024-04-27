@@ -54,7 +54,6 @@ const styles = {
     paddingTop: '60px',
     fontFamily: 'Arial, sans-serif',
     textAlign: 'center'
-    // height: '70vh',
   },
   personalization: {
     marginTop: '20px',

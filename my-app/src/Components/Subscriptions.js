@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 const Subscriptions = ({searchQuery}) => {
   const [videos, setVideos] = useState([]);
 
-
   useEffect(() => {
     const fetchVideos = async () => {
       try {

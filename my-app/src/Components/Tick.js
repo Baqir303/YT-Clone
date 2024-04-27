@@ -81,7 +81,6 @@ const styles = {
     }
 };
 
-// Adding global styles for animations using plain CSS within the component file:
 document.head.appendChild(document.createElement("style")).textContent = `
 @keyframes tick {
     0% { transform: scale(0); }

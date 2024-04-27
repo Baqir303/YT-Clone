@@ -100,7 +100,6 @@ function Personalization() {
                 console.error('Error saving categories:', response.data);
             }
         } catch (error) {
-            // Handle network error
             console.error('Error saving categories:', error.message);
         }
     };

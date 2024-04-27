@@ -1,5 +1,5 @@
 <?php
-session_start(); // Start the session
+session_start(); 
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
@@ -16,15 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    // if(isset($email)){
-    //     echo "<script>console.log('$email');</script>";
-    // } else {
-    //     echo "Email not found in session\n";
-    //     exit;
-    // }
-
-    // echo "Categories received: " . implode(',', $categories) . "\n";
-
     $stmt = $conn->prepare("UPDATE userinfo SET Personalizations = ? WHERE Email = ?");
     $stmt->bind_param("ss", $categoriesStr, $email);
 
@@ -33,7 +24,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($stmt->execute()) {
         echo "Categories saved successfully";
     } else {
-        // echo "Error: " . $stmt->error;
     }
 
     $stmt->close();

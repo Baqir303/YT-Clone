@@ -4,7 +4,6 @@ import bgImg from '../Images/bg-v3.jpg';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-// import { Link } from 'react-router-dom';
 
 const styles = {
   mainDiv: {
@@ -20,7 +19,6 @@ const styles = {
   container: {
     backgroundColor: '#fff',
     padding: '30px',
-    // borderRadius: '5px',
     boxShadow: '0 2px 5px rgba(0, 0, 0, 0.1)',
     textAlign: 'center',
     maxWidth: '400px',
@@ -78,9 +76,6 @@ function LoginSignup() {
   const navigate = useNavigate();
   const [isLoginVisible, setIsLoginVisible] = useState(true);
   const [message, setMessage] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [categories, setCategories] = useState([]);
-
 
   const toggleVisibility = () => {
     setIsLoginVisible(!isLoginVisible);
@@ -120,7 +115,6 @@ function LoginSignup() {
     }
     try {
       const response = await axios.post('http://localhost/YT_Backend/signup.php', { name, email, password });
-      // axios.post('http://localhost/YT_Backend/save-categories.php', { email});
       if (response.data !== 'Invalid request method') {
         localStorage.setItem('email',response.data);
         navigate('/Personalization');
