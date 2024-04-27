@@ -12,6 +12,7 @@ import LoginSignup from './Components/loginsignup';
 import Personalization from './Components/Personalization';
 import Tick from './Components/Tick';
 import Library from './Components/Library';
+import Subscriptions from './Components/Subscriptions';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -54,6 +55,7 @@ function MainApp({ isSidebarOpen, toggleSidebar, searchQuery, handleSearch }) {
         <Route exact path="/explore" element={<Explore searchQuery={searchQuery} />} />
         <Route exact path="/user-info" element={<UserInfo searchQuery={searchQuery} />} />
         <Route exact path="/library" element={<Library searchQuery={searchQuery} />} />
+        <Route exact path="/subscriptions" element={<Subscriptions searchQuery={searchQuery} />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>

@@ -7,7 +7,7 @@ import LibraryImg from '../Images/Library.png'
 import HistoryImg from '../Images/History.png'
 import PlaylistIcon from '../Images/PlayList.png'
 import MessageImg from '../Images/Message.png'
-import ShowMoreImg from '../Images/Down Arrow.png'
+// import ShowMoreImg from '../Images/Down Arrow.png'
 import MrBeastImg from '../Images/MrBeastLogo.jpg'
 import WWEImg from '../Images/WWE logo.jpg'
 import WaqarzakaImg from '../Images/WakarZaka.jpg'
@@ -26,7 +26,7 @@ export default function Sidebar({ isOpen }) {
       <div className="shortcut-links">
         <Link to="/"><img src={HomeImg} alt="" className='HomeImg' /><p>Home</p></Link>
         <Link to="/explore"><img src={ExploreImg} alt="" /><p>Explore</p></Link>
-        <Link to="/"><img src={SubscriptionImg} alt="" /><p>Subscription</p></Link>
+        <Link to="/subscriptions"><img src={SubscriptionImg} alt="" /><p>Subscription</p></Link>
         <Link to="/shorts"><img src={ShortsImg} alt="" /><p>Shorts</p></Link>
         <Link to="/library"><img src={LibraryImg} alt="" /><p>Library</p></Link>
         <Link to="/"><img src={HistoryImg} alt="" /><p>History</p></Link>
